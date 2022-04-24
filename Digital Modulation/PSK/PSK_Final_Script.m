@@ -1,0 +1,12 @@
+bits = randi([0 1],1,100);
+phi = input('please enter the phase shift in the detector ');
+bitrate = 1;
+n = 1000;
+T = length(bits)/bitrate;
+N = n*length(bits);
+dt = T/N;
+t = 0:dt:T;
+P_Time= PNRZ_Time(bits,t,n);
+PNRZ_Spectrum(P_Time,n);
+Filteredsignal = PSK_Dem_Time(P_Time,t,n,phi);
+PSK_Dem_Spectrum(P_Time,Filteredsignal,n);
